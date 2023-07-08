@@ -4,22 +4,24 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ContextoGlobal from './context/ContextoGlobal';
 import Navbar from './components/Navbar';
-import Home from './components/Galeria';
 import Favoritos from './views/Favoritos';
+import Home from './views/Home';
+
 
 
 function App() {
-  const [endpoint, setEndpoint] = useState(null);
+  const [endpoint, setEndpoint] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
         try {
             const url = "/fotos.json";
             const response = await fetch(url);
             const data = await response.json();
+            const fotos = data.photos
             console.log(data)
-            setEndpoint(data);
+            setEndpoint(fotos);
         } catch (error) {
-            console.error('Error', error);
+            console.error('Error al cargar las fotos', error);
         }
     };
 
@@ -27,7 +29,8 @@ function App() {
 }, []);
   return (
     <div className="App">
-    <ContextoGlobal.Provider value={{ endpoint, setEndpoint}}>
+  
+    <ContextoGlobal.Provider value= {{endpoint, setEndpoint}}>
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -36,6 +39,12 @@ function App() {
         </Routes>
       </BrowserRouter>
       </ContextoGlobal.Provider>
+
+      <footer className="footer bg-dark text-white py-3">
+        <div className="container text-center">
+          <p>&copy; 2023 AngélicaCortés. Todos los derechos reservados.</p>
+        </div>
+      </footer>
 
     </div>
   );

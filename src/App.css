@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+.image-container {
+  position: relative;
+}
+
+.heart-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.description-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+}

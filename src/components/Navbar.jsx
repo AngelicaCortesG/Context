@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 export default function Navigation() {
   return (
     <>
-      <Navbar bg="danger" variant="danger">
+      <Navbar bg="success" variant="success">
         <Container className="justify-content-start">
           <Link to="/" className="text-white ms-3 text-decoration-none">
           🏡 Home
           </Link>
           <Link to="/favoritos" className="text-white ms-3 text-decoration-none">
-          💜 Favoritos
+          💚 Favoritos
           </Link>
-          <Navbar.Brand className="ms-auto">Natural Pic </Navbar.Brand>
+          <Navbar.Brand className="ms-auto text-white">Natural Pic </Navbar.Brand>
         </Container>
       </Navbar>
     </>
