@@ -56,3 +56,25 @@
   padding: 5px;
   font-size: 12px;
 }
+
+.error {
+  margin: 30px;
+  padding: 10px;
+  max-width: 100%;
+  color: white;
+  background-color: red;
+  text-align: center;
+  font-weight: bold;
+
+}
+
+.bien {
+  margin: 30px;
+  padding: 10px;
+  max-width: 100%;
+  color: white;
+  background-color: green;
+  text-align: center;
+  font-weight: bold;
+
+}

@@ -11,6 +11,8 @@ import Home from './views/Home';
 
 function App() {
   const [endpoint, setEndpoint] = useState([]);
+  const [favoritos, setFavoritos] = useState([]);
+  const globalState = {endpoint, setEndpoint, favoritos, setFavoritos}
   useEffect(() => {
     const fetchData = async () => {
         try {
@@ -27,10 +29,11 @@ function App() {
 
     fetchData();
 }, []);
+
   return (
     <div className="App">
   
-    <ContextoGlobal.Provider value= {{endpoint, setEndpoint}}>
+    <ContextoGlobal.Provider value= { globalState }>
       <BrowserRouter>
         <Navbar />
         <Routes>
