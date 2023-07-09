@@ -7,40 +7,39 @@ import Navbar from './components/Navbar';
 import Favoritos from './views/Favoritos';
 import Home from './views/Home';
 
-
-
 function App() {
   const [endpoint, setEndpoint] = useState([]);
   const [favoritos, setFavoritos] = useState([]);
-  const globalState = {endpoint, setEndpoint, favoritos, setFavoritos}
+
   useEffect(() => {
     const fetchData = async () => {
-        try {
-            const url = "/fotos.json";
-            const response = await fetch(url);
-            const data = await response.json();
-            const fotos = data.photos
-            console.log(data)
-            setEndpoint(fotos);
-        } catch (error) {
-            console.error('Error al cargar las fotos', error);
-        }
+      try {
+        const url = "/fotos.json";
+        const response = await fetch(url);
+        const data = await response.json();
+        const fotos = data.photos;
+        console.log(data)
+        setEndpoint(fotos);
+      } catch (error) {
+        console.error('Error al cargar las fotos', error);
+      }
     };
 
     fetchData();
-}, []);
+  }, []);
+
+  const globalState = { endpoint, setEndpoint, favoritos, setFavoritos };
 
   return (
     <div className="App">
-  
-    <ContextoGlobal.Provider value= { globalState }>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/favoritos" element={<Favoritos />} />
-        </Routes>
-      </BrowserRouter>
+      <ContextoGlobal.Provider value={globalState}>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/favoritos" element={<Favoritos />} />
+          </Routes>
+        </BrowserRouter>
       </ContextoGlobal.Provider>
 
       <footer className="footer bg-dark text-white py-3">
@@ -48,7 +47,6 @@ function App() {
           <p>&copy; 2023 AngélicaCortés. Todos los derechos reservados.</p>
         </div>
       </footer>
-
     </div>
   );
 }
